@@ -35,7 +35,7 @@ class TimesTables:
         self.next.grid(row=1, column=1)
 
         self.output_label = Label(parent, text=self.var.get())
-        self.output_label.pack()
+        self.output_label.pack(padx=50)
 
         f1.pack()
 
@@ -44,19 +44,20 @@ class TimesTables:
         try:
             if int(self.var.get()) == self.num[2]:
                 self.output_label.configure(text="Correct!")
-                self.output_label.configure(font=("Helvetica", 40))
+                self.output_label.configure(font=("Helvetica", 20))
                 self.next.configure(state=ACTIVE)
             else:
                 if int(self.var.get()) != self.num[2]:
                     self.output_label.configure(text="Incorrect!")
-                    self.output_label.configure(font=("Helvetica", 40))
+                    self.output_label.configure(font=("Helvetica", 20))
         except:
             self.output_label.configure(text="Incorrect Input!")
-            self.output_label.configure(font=("Helvetica", 40))
+            self.output_label.configure(font=("Helvetica", 20))
 
     def next_q(self):
         self.num = self.times_table.generate()
         self.q_label.configure(text=f"{self.num[0]} x {self.num[1]}")
+        self.next.configure(state=DISABLED)
 
 
 if __name__ == "__main__":
